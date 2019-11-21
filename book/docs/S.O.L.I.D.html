@@ -1,0 +1,315 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>S.O.L.I.D · Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Kuriv Vesti">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="原码反码补码.html" />
+    
+    
+    <link rel="prev" href="CRLF.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Notes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="CRLF.html">
+            
+                <a href="CRLF.html">
+            
+                    
+                    CRLF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.1.2" data-path="S.O.L.I.D.html">
+            
+                <a href="S.O.L.I.D.html">
+            
+                    
+                    S.O.L.I.D
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="原码反码补码.html">
+            
+                <a href="原码反码补码.html">
+            
+                    
+                    原码反码补码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >S.O.L.I.D</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="solid">S.O.L.I.D</h1>
+<blockquote>
+<p>S.O.L.I.D &#x662F;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#x548C;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x8BBE;&#x8BA1;&#x7684;&#x4E94;&#x4E2A;&#x57FA;&#x672C;&#x539F;&#x5219;&#xFF0C;&#x5E94;&#x7528;&#x8FD9;&#x4E94;&#x4E2A;&#x539F;&#x5219;&#x80FD;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6613;&#x4E8E;&#x7EF4;&#x62A4;&#x548C;&#x6269;&#x5C55;&#x7684;&#x8F6F;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002; S.O.L.I.D &#x53EF;&#x4EE5;&#x6307;&#x5BFC;&#x4EE3;&#x7801;&#x91CD;&#x6784;&#x548C;&#x5728;&#x8FED;&#x4EE3;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x8FDB;&#x884C;&#x4EE3;&#x7801;&#x6E05;&#x626B;&#xFF0C;&#x4EE5;&#x4F7F;&#x5F97;&#x8F6F;&#x4EF6;&#x6E90;&#x4EE3;&#x7801;&#x6E05;&#x6670;&#x53EF;&#x8BFB;&#x548C;&#x5177;&#x6709;&#x826F;&#x597D;&#x7684;&#x6269;&#x5C55;&#x6027;&#x3002;&#x5728;&#x6D4B;&#x8BD5;&#x9A71;&#x52A8;&#x5F00;&#x53D1;&#x4E2D;&#x662F;&#x5178;&#x578B;&#x5E94;&#x7528;&#x573A;&#x666F;&#xFF0C;&#x5E76;&#x4E14;&#x4E5F;&#x662F;&#x654F;&#x6377;&#x5F00;&#x53D1;&#x548C;&#x81EA;&#x9002;&#x5E94;&#x8F6F;&#x4EF6;&#x5F00;&#x53D1;&#x57FA;&#x672C;&#x539F;&#x5219;&#x7684;&#x91CD;&#x8981;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#x3002;</p>
+</blockquote>
+<ul>
+<li><a href="#&#x5355;&#x4E00;&#x529F;&#x80FD;&#x539F;&#x5219;&#xFF08;-s-&#xFF09;">&#x5355;&#x4E00;&#x529F;&#x80FD;&#x539F;&#x5219;&#xFF08; S &#xFF09;</a></li>
+<li><a href="#&#x5F00;&#x653E;&#x5C01;&#x95ED;&#x539F;&#x5219;&#xFF08;-o-&#xFF09;">&#x5F00;&#x653E;&#x5C01;&#x95ED;&#x539F;&#x5219;&#xFF08; O &#xFF09;</a></li>
+<li><a href="#&#x91CC;&#x6C0F;&#x66FF;&#x6362;&#x539F;&#x5219;&#xFF08;-l-&#xFF09;">&#x91CC;&#x6C0F;&#x66FF;&#x6362;&#x539F;&#x5219;&#xFF08; L &#xFF09;</a></li>
+<li><a href="#&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;&#xFF08;-i-&#xFF09;">&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;&#xFF08; I &#xFF09;</a></li>
+<li><a href="#&#x4F9D;&#x8D56;&#x53CD;&#x8F6C;&#x539F;&#x5219;&#xFF08;-d-&#xFF09;">&#x4F9D;&#x8D56;&#x53CD;&#x8F6C;&#x539F;&#x5219;&#xFF08; D &#xFF09;</a></li>
+</ul>
+<h2 id="&#x5355;&#x4E00;&#x529F;&#x80FD;&#x539F;&#x5219;&#xFF08;-s-&#xFF09;">&#x5355;&#x4E00;&#x529F;&#x80FD;&#x539F;&#x5219;&#xFF08; S &#xFF09;</h2>
+<p><img src="&#x5355;&#x4E00;&#x529F;&#x80FD;&#x539F;&#x5219;.png" alt="&#x5355;&#x4E00;&#x529F;&#x80FD;&#x539F;&#x5219;"></p>
+<blockquote>
+<p>&#x8BA9;&#x4E00;&#x4E2A;&#x7C7B;&#x53EA;&#x505A;&#x4E00;&#x4EF6;&#x4E8B;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x627F;&#x62C5;&#x66F4;&#x591A;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x90A3;&#x4E48;&#x5206;&#x89E3;&#x8FD9;&#x4E2A;&#x7C7B;&#x3002;</p>
+</blockquote>
+<h2 id="&#x5F00;&#x653E;&#x5C01;&#x95ED;&#x539F;&#x5219;&#xFF08;-o-&#xFF09;">&#x5F00;&#x653E;&#x5C01;&#x95ED;&#x539F;&#x5219;&#xFF08; O &#xFF09;</h2>
+<p><img src="&#x5F00;&#x653E;&#x5C01;&#x95ED;&#x539F;&#x5219;.png" alt="&#x5F00;&#x653E;&#x5C01;&#x95ED;&#x539F;&#x5219;"></p>
+<blockquote>
+<p>&#x7C7B;&#xFF0C;&#x6A21;&#x5757;&#xFF0C;&#x51FD;&#x6570;&#x7B49;&#x5E94;&#x5F53;&#x5BF9;&#x6269;&#x5C55;&#x5F00;&#x653E;&#xFF0C;&#x5BF9;&#x4FEE;&#x6539;&#x95ED;&#x5408;&#x3002;</p>
+</blockquote>
+<h2 id="&#x91CC;&#x6C0F;&#x66FF;&#x6362;&#x539F;&#x5219;&#xFF08;-l-&#xFF09;">&#x91CC;&#x6C0F;&#x66FF;&#x6362;&#x539F;&#x5219;&#xFF08; L &#xFF09;</h2>
+<p><img src="&#x91CC;&#x6C0F;&#x66FF;&#x6362;&#x539F;&#x5219;.png" alt="&#x91CC;&#x6C0F;&#x66FF;&#x6362;&#x539F;&#x5219;"></p>
+<blockquote>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x5B50;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x5E94;&#x8BE5;&#x80FD;&#x591F;&#x66FF;&#x6362;&#x4EFB;&#x4F55;&#x5176;&#x7236;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x65F6;&#xFF0C;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x624D;&#x5177;&#x6709; IS-A &#x5173;&#x7CFB;&#x3002;</p>
+</blockquote>
+<h2 id="&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;&#xFF08;-i-&#xFF09;">&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;&#xFF08; I &#xFF09;</h2>
+<p><img src="&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;.png" alt="&#x63A5;&#x53E3;&#x9694;&#x79BB;&#x539F;&#x5219;"></p>
+<blockquote>
+<p>&#x4E0D;&#x8981;&#x5F3A;&#x8FEB;&#x5BA2;&#x6237;&#x7AEF;&#x53BB;&#x4F9D;&#x8D56;&#x90A3;&#x4E9B;&#x4ED6;&#x4EEC;&#x4E0D;&#x4F7F;&#x7528;&#x7684;&#x63A5;&#x53E3;&#x3002;</p>
+</blockquote>
+<h2 id="&#x4F9D;&#x8D56;&#x53CD;&#x8F6C;&#x539F;&#x5219;&#xFF08;-d-&#xFF09;">&#x4F9D;&#x8D56;&#x53CD;&#x8F6C;&#x539F;&#x5219;&#xFF08; D &#xFF09;</h2>
+<p><img src="&#x4F9D;&#x8D56;&#x53CD;&#x8F6C;&#x539F;&#x5219;.png" alt="&#x4F9D;&#x8D56;&#x53CD;&#x8F6C;&#x539F;&#x5219;"></p>
+<blockquote>
+<p>&#x9AD8;&#x5C42;&#x6A21;&#x5757;&#x4E0D;&#x5E94;&#x8BE5;&#x4F9D;&#x8D56;&#x5E95;&#x5C42;&#x6A21;&#x5757;&#xFF0C;&#x4E24;&#x8005;&#x90FD;&#x5E94;&#x8BE5;&#x4F9D;&#x8D56;&#x5176;&#x62BD;&#x8C61;&#x3002;</p>
+<p>&#x62BD;&#x8C61;&#x4E0D;&#x5E94;&#x8BE5;&#x4F9D;&#x8D56;&#x4E8E;&#x7EC6;&#x8282;&#xFF0C;&#x7EC6;&#x8282;&#x5E94;&#x8BE5;&#x4F9D;&#x8D56;&#x4E8E;&#x62BD;&#x8C61;&#x3002;</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="CRLF.html" class="navigation navigation-prev " aria-label="Previous page: CRLF">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="原码反码补码.html" class="navigation navigation-next " aria-label="Next page: 原码反码补码">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"S.O.L.I.D","level":"1.1.2","depth":2,"next":{"title":"原码反码补码","level":"1.1.3","depth":2,"path":"docs/原码反码补码.md","ref":"docs/原码反码补码.md","articles":[]},"previous":{"title":"CRLF","level":"1.1.1","depth":2,"path":"docs/CRLF.md","ref":"docs/CRLF.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"Notes","language":"zh-hans","gitbook":">=3.0.0","description":"Notes","direction":"ltr"},"file":{"path":"docs/S.O.L.I.D.md","mtime":"2019-11-21T05:32:11.232Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T05:47:38.809Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
