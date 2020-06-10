@@ -2,7 +2,7 @@
 
 * [垃圾回收机制]
 * [修改 Session 的生存时间]
-* [页面重定向的方法]
+* [页面重定向的方法](#页面重定向的方法)
 * [使用正则表达式匹配 HTML 页面中所有 a 标签的 href 属性]
 * [预定义变量](#预定义变量)
 * [魔术变量](#魔术变量)
@@ -20,6 +20,23 @@
 ## 页面重定向的方法
 
 ```php
+<?php
+
+header('Location: http://www.example.com');
+
+```
+
+```php
+<?php
+
+echo '<meta http-equiv="refresh" content="0; url=http://www.example.com">';
+
+```
+
+```php
+<?php
+
+echo '<script type="text/javascript">window.location.href="http://www.example.com"</script>';
 
 ```
 
