@@ -8,6 +8,8 @@
 * [魔术变量](#魔术变量)
 * [魔术方法](#魔术方法)
 * [设计模式](#设计模式)
+* [类型比较表](#类型比较表)
+* [echo (int) ((0.1 + 0.7) * 10)](#echo-int-01--07--10)
 
 ## 垃圾回收机制
 
@@ -61,3 +63,26 @@ echo '<script type="text/javascript">window.location.href="http://www.example.co
 ## 设计模式
 
 [phpdp](https://github.com/kuriv/phpdp)
+
+## 类型比较表
+
+[类型比较表](https://kuriv.github.io/manual-php/book/docs/PHP 类型比较表.html)
+
+## echo (int) ((0.1 + 0.7) * 10)
+
+```php
+<?php
+
+echo (int) ((0.1 + 0.7) * 10); // 7
+
+```
+
+浮点数只能表示一个实数的近似值。
+
+```php
+<?php
+
+printf('%0.16f', 0.1 + 0.7); // 0.7999999999999999
+
+```
+
