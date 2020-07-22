@@ -282,6 +282,11 @@
 <li><a href="#&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;">&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;</a></li>
 <li><a href="#&#x7C7B;&#x578B;&#x6BD4;&#x8F83;&#x8868;">&#x7C7B;&#x578B;&#x6BD4;&#x8F83;&#x8868;</a></li>
 <li><a href="#echo-int-01--07--10">echo (int) ((0.1 + 0.7) * 10)</a></li>
+<li><a href="#&#x4F7F;&#x7528;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5EFA;&#x7ACB;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;">&#x4F7F;&#x7528;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5EFA;&#x7ACB;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;</a></li>
+<li>[&#x5192;&#x6CE1;&#x6392;&#x5E8F;]</li>
+<li>[&#x9009;&#x62E9;&#x6392;&#x5E8F;]</li>
+<li>[&#x63D2;&#x5165;&#x6392;&#x5E8F;]</li>
+<li>[&#x5FEB;&#x901F;&#x6392;&#x5E8F;]</li>
 </ul>
 <h2 id="&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;">&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;</h2>
 <p><a href="https://kuriv.github.io/manual-php/book/docs/&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;.html" target="_blank">&#x5783;&#x573E;&#x56DE;&#x6536;&#x673A;&#x5236;</a></p>
@@ -346,6 +351,83 @@
 
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token single-quoted-string string">&apos;%0.16f&apos;</span><span class="token punctuation">,</span> <span class="token number">0.1</span> <span class="token operator">+</span> <span class="token number">0.7</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.7999999999999999</span>
 </code></pre>
+<h2 id="&#x4F7F;&#x7528;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5EFA;&#x7ACB;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;">&#x4F7F;&#x7528;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5EFA;&#x7ACB;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;</h2>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">DB</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * Store the database instance.
+     *
+     * @var PDO
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token constant">PDO</span> <span class="token variable">$instance</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * Prevent the instance from being constructed.
+     *
+     * @param  void
+     * @return void
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * Prevent the instance from being cloned.
+     *
+     * @param  void
+     * @return void
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">__clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * Prevent the instance from being unserialized.
+     *
+     * @param  void
+     * @return void
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">__wakeup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * Get the instance via lazy initialization.
+     *
+     * @param  void
+     * @return PDO
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token constant">PDO</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">static</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token variable">$instance</span> <span class="token operator">?</span><span class="token operator">?</span><span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token single-quoted-string string">&apos;mysql:host=127.0.0.1;port=3306;dbname=test&apos;</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">&apos;root&apos;</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">&apos;root&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token variable">$foo</span> <span class="token operator">=</span> <span class="token constant">DB</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$bar</span> <span class="token operator">=</span> <span class="token constant">DB</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$foo</span> <span class="token operator">===</span> <span class="token variable">$bar</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// bool(true)</span>
+</code></pre>
+<h2 id="&#x5192;&#x6CE1;&#x6392;&#x5E8F;">&#x5192;&#x6CE1;&#x6392;&#x5E8F;</h2>
+<pre class="language-"><code class="lang-php">
+
+</code></pre>
+<h2 id="&#x9009;&#x62E9;&#x6392;&#x5E8F;">&#x9009;&#x62E9;&#x6392;&#x5E8F;</h2>
+<pre class="language-"><code class="lang-php">
+
+</code></pre>
+<h2 id="&#x63D2;&#x5165;&#x6392;&#x5E8F;">&#x63D2;&#x5165;&#x6392;&#x5E8F;</h2>
+<pre class="language-"><code class="lang-php">
+
+</code></pre>
+<h2 id="&#x5FEB;&#x901F;&#x6392;&#x5E8F;">&#x5FEB;&#x901F;&#x6392;&#x5E8F;</h2>
+<pre class="language-"><code class="lang-php">
+
+</code></pre>
 
                                 
                                 </section>
@@ -385,7 +467,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PHP","level":"1.1.5.1","depth":3,"previous":{"title":"面试题","level":"1.1.5","depth":2,"path":"docs/面试题.md","ref":"docs/面试题.md","articles":[{"title":"PHP","level":"1.1.5.1","depth":3,"path":"docs/面试题/PHP.md","ref":"docs/面试题/PHP.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"Notes","language":"zh-hans","gitbook":">=3.0.0","description":"Notes","direction":"ltr"},"file":{"path":"docs/面试题/PHP.md","mtime":"2020-07-15T12:06:36.134Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-15T12:06:39.335Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PHP","level":"1.1.5.1","depth":3,"previous":{"title":"面试题","level":"1.1.5","depth":2,"path":"docs/面试题.md","ref":"docs/面试题.md","articles":[{"title":"PHP","level":"1.1.5.1","depth":3,"path":"docs/面试题/PHP.md","ref":"docs/面试题/PHP.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"Notes","language":"zh-hans","gitbook":">=3.0.0","description":"Notes","direction":"ltr"},"file":{"path":"docs/面试题/PHP.md","mtime":"2020-07-22T13:34:24.199Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-22T13:34:26.616Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

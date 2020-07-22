@@ -11,6 +11,11 @@
 * [设计模式](#设计模式)
 * [类型比较表](#类型比较表)
 * [echo (int) ((0.1 + 0.7) * 10)](#echo-int-01--07--10)
+* [使用单例模式建立数据库连接](#使用单例模式建立数据库连接)
+* [冒泡排序]
+* [选择排序]
+* [插入排序]
+* [快速排序]
 
 ## 垃圾回收机制
 
@@ -123,3 +128,91 @@ printf('%0.16f', 0.1 + 0.7); // 0.7999999999999999
 
 ```
 
+## 使用单例模式建立数据库连接
+
+```php
+<?php
+
+final class DB
+{
+    /**
+     * Store the database instance.
+     *
+     * @var PDO
+     */
+    private static PDO $instance;
+
+    /**
+     * Prevent the instance from being constructed.
+     *
+     * @param  void
+     * @return void
+     */
+    private function __construct()
+    {
+        //
+    }
+
+    /**
+     * Prevent the instance from being cloned.
+     *
+     * @param  void
+     * @return void
+     */
+    private function __clone()
+    {
+        //
+    }
+
+    /**
+     * Prevent the instance from being unserialized.
+     *
+     * @param  void
+     * @return void
+     */
+    private function __wakeup()
+    {
+        //
+    }
+
+    /**
+     * Get the instance via lazy initialization.
+     *
+     * @param  void
+     * @return PDO
+     */
+    public static function getInstance(): PDO
+    {
+        return static::$instance ??= new PDO('mysql:host=127.0.0.1;port=3306;dbname=test', 'root', 'root');
+    }
+}
+
+$foo = DB::getInstance();
+$bar = DB::getInstance();
+var_dump($foo === $bar); // bool(true)
+
+```
+
+## 冒泡排序
+
+```php
+
+```
+
+## 选择排序
+
+```php
+
+```
+
+## 插入排序
+
+```php
+
+```
+
+## 快速排序
+
+```php
+
+```
