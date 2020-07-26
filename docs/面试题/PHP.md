@@ -14,8 +14,8 @@
 * [使用单例模式建立数据库连接](#使用单例模式建立数据库连接)
 * [冒泡排序](#冒泡排序)
 * [选择排序](#选择排序)
-* [插入排序]
-* [快速排序]
+* [插入排序](#插入排序)
+* [快速排序](#快速排序)
 
 ## 垃圾回收机制
 
@@ -200,14 +200,25 @@ var_dump($foo === $bar); // bool(true)
 ```php
 <?php
 
-$array = [5, 2, 3, 6, 5, 8, 1];
+/**
+ * Bubble sort.
+ *
+ * @param  array  &$array
+ * @return void
+ */
+function bubbleSort(array &$array)
+{
+    if (!is_array($array) || empty($array)) {
+        return;
+    }
 
-for ($i = 1, $x = count($array); $i < $x; $i++) {
-    for ($j = 0, $y = $x - $i; $j < $y; $j++) {
-        if ($array[$j] > $array[$j + 1]) {
-            $tmp = $array[$j + 1];
-            $array[$j + 1] = $array[$j];
-            $array[$j] = $tmp;
+    for ($i = 1, $x = count($array); $i < $x; $i++) {
+        for ($j = 0, $y = $x - $i; $j < $y; $j++) {
+            if ($array[$j] > $array[$j + 1]) {
+                $tmp = $array[$j + 1];
+                $array[$j + 1] = $array[$j];
+                $array[$j] = $tmp;
+            }
         }
     }
 }
@@ -221,19 +232,30 @@ for ($i = 1, $x = count($array); $i < $x; $i++) {
 ```php
 <?php
 
-$array = [5, 2, 3, 6, 5, 8, 1];
-
-for ($i = 0, $count = count($array); $i < $count; $i++) {
-    $min = $i;
-    for ($j = $i + 1; $j < $count; $j++) {
-        if ($array[$min] > $array[$j]) {
-            $min = $j;
-        }
+/**
+ * Selection sort.
+ *
+ * @param  array  &$array
+ * @return void
+ */
+function selectionSort(array &$array)
+{
+    if (!is_array($array) || empty($array)) {
+        return;
     }
-    if ($min != $i) {
-        $tmp = $array[$min];
-        $array[$min] = $array[$i];
-        $array[$i] = $tmp;
+
+    for ($i = 0, $count = count($array); $i < $count; $i++) {
+        $min = $i;
+        for ($j = $i + 1; $j < $count; $j++) {
+            if ($array[$min] > $array[$j]) {
+                $min = $j;
+            }
+        }
+        if ($min != $i) {
+            $tmp = $array[$min];
+            $array[$min] = $array[$i];
+            $array[$i] = $tmp;
+        }
     }
 }
 
@@ -241,12 +263,63 @@ for ($i = 0, $count = count($array); $i < $count; $i++) {
 
 ## 插入排序
 
+> 每次将一个等待排序的元素按其大小插入到前面已经排好序的适当的位置中，直到全部元素插入完成。
+
 ```php
+<?php
+
+/**
+ * Insertion sort.
+ *
+ * @param  array  &$array
+ * @return void
+ */
+function insertionSort(array &$array)
+{
+    if (!is_array($array) || empty($array)) {
+        return;
+    }
+
+    for ($i = 1, $count = count($array); $i < $count; $i++) {
+        $tmp = $array[$i];
+        for ($j = $i - 1; $j >= 0; $j--) {
+            if ($array[$j] > $tmp) {
+                $array[$j + 1] = $array[$j];
+                $array[$j] = $tmp;
+            }
+        }
+    }
+}
 
 ```
 
 ## 快速排序
 
+> 快速排序是对冒泡排序的改进，首先通过一次排序将元素分成独立的两部分，其中一部分的元素均比另一部分的元素小，然后分别对这两部分继续进行快速排序，整个排序过程可以递归进行。
+
 ```php
+<?php
+
+/**
+ * Quick sort.
+ *
+ * @param  array  &$array
+ * @return void
+ */
+function quickSort(array &$array)
+{
+    if (!is_array($array) || empty($array) || ($count = count($array)) == 1) {
+        return;
+    }
+
+    $left = $right = [];
+    for ($i = 1; $i < $count; $i++) {
+        $array[$i] > $array[0] ? $right[] = $array[$i] : $left[] = $array[$i];
+    }
+
+    quickSort($left);
+    quickSort($right);
+    $array = array_merge($left, [$array[0]], $right);
+}
 
 ```
