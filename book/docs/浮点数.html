@@ -1,0 +1,459 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>浮点数 · Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Kuriv Vesti">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="时间复杂度.html" />
+    
+    
+    <link rel="prev" href="原码-反码-补码.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="apple-touch-icon" href='../favicon.png'>
+    
+    
+        
+        <link rel="apple-touch-icon" sizes="120x120" href="../favicon-120x120.png">
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../favicon-180x180.png">
+        
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Notes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="CRLF.html">
+            
+                <a href="CRLF.html">
+            
+                    
+                    CRLF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="SOLID.html">
+            
+                <a href="SOLID.html">
+            
+                    
+                    SOLID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="原码-反码-补码.html">
+            
+                <a href="原码-反码-补码.html">
+            
+                    
+                    原码-反码-补码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.1.4" data-path="浮点数.html">
+            
+                <a href="浮点数.html">
+            
+                    
+                    浮点数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.5" data-path="时间复杂度.html">
+            
+                <a href="时间复杂度.html">
+            
+                    
+                    时间复杂度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.6" data-path="面试题.html">
+            
+                <a href="面试题.html">
+            
+                    
+                    面试题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.6.1" data-path="面试题/PHP.html">
+            
+                <a href="面试题/PHP.html">
+            
+                    
+                    PHP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >浮点数</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x6D6E;&#x70B9;&#x6570;">&#x6D6E;&#x70B9;&#x6570;</h1>
+<ul>
+<li><a href="#&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x8868;&#x793A;&#x5F62;&#x5F0F;">&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x8868;&#x793A;&#x5F62;&#x5F0F;</a></li>
+<li><a href="#32-&#x4F4D;&#x6D6E;&#x70B9;&#x6570;&#x4E0E;-64-&#x4F4D;&#x6D6E;&#x70B9;&#x6570;">32 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;&#x4E0E; 64 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;</a></li>
+<li><a href="#&#x6709;&#x6548;&#x6570;&#x5B57;-m-&#x7684;&#x7279;&#x522B;&#x89C4;&#x5B9A;">&#x6709;&#x6548;&#x6570;&#x5B57; M &#x7684;&#x7279;&#x522B;&#x89C4;&#x5B9A;</a></li>
+<li><a href="#&#x6307;&#x6570;-e-&#x7684;&#x7279;&#x522B;&#x89C4;&#x5B9A;">&#x6307;&#x6570; E &#x7684;&#x7279;&#x522B;&#x89C4;&#x5B9A;</a></li>
+<li><a href="#&#x6574;&#x6570;&#x8F6C;&#x6362;&#x4E3A;&#x6D6E;&#x70B9;&#x6570;">&#x6574;&#x6570;&#x8F6C;&#x6362;&#x4E3A;&#x6D6E;&#x70B9;&#x6570;</a></li>
+<li><a href="#&#x6D6E;&#x70B9;&#x6570;&#x8F6C;&#x6362;&#x4E3A;&#x6574;&#x6570;">&#x6D6E;&#x70B9;&#x6570;&#x8F6C;&#x6362;&#x4E3A;&#x6574;&#x6570;</a></li>
+</ul>
+<h2 id="&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x8868;&#x793A;&#x5F62;&#x5F0F;">&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x8868;&#x793A;&#x5F62;&#x5F0F;</h2>
+<p><a href="&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x8868;&#x793A;&#x5F62;&#x5F0F;.png" data-lightbox="f47a85f7-2f59-48a5-896d-86d3f42bbcf9" data-title="&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x8868;&#x793A;&#x5F62;&#x5F0F;"><img src="&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x8868;&#x793A;&#x5F62;&#x5F0F;.png" alt="&#x6D6E;&#x70B9;&#x6570;&#x7684;&#x8868;&#x793A;&#x5F62;&#x5F0F;"></a></p>
+<blockquote>
+<ul>
+<li>(-1)^S &#x8868;&#x793A;&#x7B26;&#x53F7;&#x4F4D;&#xFF0C;&#x5F53; S = 0 &#xFF0C;&#x6D6E;&#x70B9;&#x6570;&#x4E3A;&#x6B63;&#x6570;&#xFF0C;&#x53CD;&#x4E4B;&#xFF0C;&#x5F53;S = 1 &#xFF0C;&#x6D6E;&#x70B9;&#x6570;&#x4E3A;&#x8D1F;&#x6570;&#x3002;</li>
+<li>M &#x8868;&#x793A;&#x6709;&#x6548;&#x6570;&#x5B57;&#xFF0C;&#x5927;&#x4E8E;&#x7B49;&#x4E8E; 1 &#x4E14;&#x5C0F;&#x4E8E; 2 &#x3002;</li>
+<li>E &#x8868;&#x793A;&#x6307;&#x6570;&#x3002;</li>
+</ul>
+</blockquote>
+<h2 id="32-&#x4F4D;&#x6D6E;&#x70B9;&#x6570;&#x4E0E;-64-&#x4F4D;&#x6D6E;&#x70B9;&#x6570;">32 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;&#x4E0E; 64 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;</h2>
+<blockquote>
+<p>&#x6839;&#x636E; IEEE 754 &#x89C4;&#x5B9A;&#xFF0C;&#x5BF9;&#x4E8E; 32 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;&#xFF0C;&#x6700;&#x9AD8;&#x7684; 1 &#x4F4D;&#x662F;&#x7B26;&#x53F7;&#x4F4D; S &#xFF0C;&#x7136;&#x540E;&#x8DDF;&#x7740;&#x7684; 8 &#x4F4D;&#x662F;&#x6307;&#x6570; E &#xFF0C;&#x6700;&#x540E;&#x5269;&#x4E0B;&#x7684; 23 &#x4F4D;&#x4E3A;&#x6709;&#x6548;&#x6570;&#x5B57; M &#x3002;</p>
+</blockquote>
+<p><a href="32%20&#x4F4D;&#x6D6E;&#x70B9;&#x6570;.png" data-lightbox="2aa4d89e-9ae4-460f-ae30-53aedb64a7e3" data-title="32 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;"><img src="32 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;.png" alt="32 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;"></a></p>
+<blockquote>
+<p>&#x5BF9;&#x4E8E; 64 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;&#xFF0C;&#x6700;&#x9AD8;&#x7684; 1 &#x4F4D;&#x662F;&#x7B26;&#x53F7;&#x4F4D; S &#xFF0C;&#x63A5;&#x7740;&#x7684; 11 &#x4F4D;&#x662F;&#x6307;&#x6570; E &#xFF0C;&#x5269;&#x4E0B;&#x7684; 52 &#x4F4D;&#x4E3A;&#x6709;&#x6548;&#x6570;&#x5B57; M &#x3002;</p>
+</blockquote>
+<p><a href="64%20&#x4F4D;&#x6D6E;&#x70B9;&#x6570;.png" data-lightbox="abb28ff5-fd96-48d9-9592-7ec44cc7350b" data-title="64 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;"><img src="64 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;.png" alt="64 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;"></a></p>
+<h2 id="&#x6709;&#x6548;&#x6570;&#x5B57;-m-&#x7684;&#x7279;&#x522B;&#x89C4;&#x5B9A;">&#x6709;&#x6548;&#x6570;&#x5B57; M &#x7684;&#x7279;&#x522B;&#x89C4;&#x5B9A;</h2>
+<blockquote>
+<p>M &#x8868;&#x793A;&#x6709;&#x6548;&#x6570;&#x5B57;&#xFF0C;&#x5927;&#x4E8E;&#x7B49;&#x4E8E; 1 &#x4E14;&#x5C0F;&#x4E8E; 2 &#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C; M &#x53EF;&#x4EE5;&#x5199;&#x6210; 1.xxxxxx &#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x5176;&#x4E2D; xxxxxx &#x8868;&#x793A;&#x5C0F;&#x6570;&#x90E8;&#x5206;&#x3002;&#x6839;&#x636E; IEEE 754 &#x89C4;&#x5B9A;&#xFF0C;&#x5728;&#x8BA1;&#x7B97;&#x673A;&#x5185;&#x90E8;&#x4FDD;&#x5B58; M &#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x8FD9;&#x4E2A;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4F4D;&#x603B;&#x662F; 1 &#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x88AB;&#x820D;&#x53BB;&#xFF0C;&#x53EA;&#x4FDD;&#x5B58;&#x540E;&#x9762;&#x7684; xxxxxx &#x5C0F;&#x6570;&#x90E8;&#x5206;&#x3002;</p>
+</blockquote>
+<h2 id="&#x6307;&#x6570;-e-&#x7684;&#x7279;&#x522B;&#x89C4;&#x5B9A;">&#x6307;&#x6570; E &#x7684;&#x7279;&#x522B;&#x89C4;&#x5B9A;</h2>
+<blockquote>
+<p>&#x6839;&#x636E; IEEE 754 &#x89C4;&#x5B9A;&#xFF0C; E &#x7684;&#x771F;&#x5B9E;&#x503C;&#x5FC5;&#x987B;&#x51CF;&#x53BB;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x6570;&#x3002;&#x5BF9;&#x4E8E; 32 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;&#x7684; E &#xFF0C;&#x8FD9;&#x4E2A;&#x4E2D;&#x95F4;&#x6570;&#x662F; 127 &#xFF0C;&#x5BF9;&#x4E8E; 64 &#x4F4D;&#x6D6E;&#x70B9;&#x6570;&#x7684; E &#xFF0C;&#x8FD9;&#x4E2A;&#x4E2D;&#x95F4;&#x6570;&#x662F; 1023 &#x3002;</p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x6307;&#x6570; E &#x8FD8;&#x53EF;&#x4EE5;&#x518D;&#x5206;&#x6210;&#x4E09;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ul>
+<li><strong>E &#x4E0D;&#x5168;&#x4E3A; 0 &#x6216;&#x8005;&#x4E0D;&#x5168;&#x4E3A; 1 &#xFF1A;</strong>&#x6B64;&#x65F6;&#xFF0C;&#x6307;&#x6570; E &#x5FC5;&#x987B;&#x51CF;&#x53BB;&#x5BF9;&#x5E94;&#x7684;&#x4E2D;&#x95F4;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x5C06;&#x6709;&#x6548;&#x6570;&#x5B57; M &#x52A0;&#x4E0A;&#x7B2C;&#x4E00;&#x4F4D;&#x7684; 1 &#x3002;</li>
+<li><strong>E &#x5168;&#x4E3A; 0 &#xFF1A;</strong>&#x6B64;&#x65F6;&#xFF0C;&#x6307;&#x6570; E &#x7B49;&#x4E8E; 1 &#x51CF;&#x53BB;&#x5BF9;&#x5E94;&#x7684;&#x4E2D;&#x95F4;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x6709;&#x6548;&#x6570;&#x5B57; M &#x4E0D;&#x518D;&#x52A0;&#x4E0A;&#x7B2C;&#x4E00;&#x4F4D;&#x7684; 1 &#xFF0C;&#x800C;&#x662F;&#x8FD8;&#x539F;&#x4E3A; 0.xxxxxx &#x7684;&#x5C0F;&#x6570;&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x662F;&#x4E3A;&#x4E86;&#x8868;&#x793A;&#x63A5;&#x8FD1;&#x4E8E; 0 &#x7684;&#x5F88;&#x5C0F;&#x7684;&#x6570;&#x5B57;&#x3002;</li>
+<li><strong>E &#x5168;&#x4E3A; 1 &#xFF1A;</strong>&#x6B64;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x6548;&#x6570;&#x5B57; M &#x5168;&#x4E3A; 0 &#xFF0C;&#x5219;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x6570;&#x65E0;&#x7A77;&#x5927;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x6548;&#x6570;&#x5B57; M &#x4E0D;&#x5168;&#x4E3A; 0 &#xFF0C;&#x5219;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x6570;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x3002;</li>
+</ul>
+</blockquote>
+<h2 id="&#x6574;&#x6570;&#x8F6C;&#x6362;&#x4E3A;&#x6D6E;&#x70B9;&#x6570;">&#x6574;&#x6570;&#x8F6C;&#x6362;&#x4E3A;&#x6D6E;&#x70B9;&#x6570;</h2>
+<pre class="language-"><code class="lang-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token keyword">const</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">float</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>a<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%d\n&quot;</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 9</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%f\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.000000</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code>9 =&gt; 00000000 00000000 00000000 00001001
+  =&gt; S = 0
+  =&gt; M = 00000000000000000001001 = 0.00000000000000000001001
+  =&gt; E = 00000000 = 1 - 127 = -126
+  =&gt; (-1)^0 &#xD7; 0.00000000000000000001001 &#xD7; 2^(-126)
+  =&gt; 1.001 &#xD7; 2^(-146) &#x2248; 0.000000
+</code></pre><h2 id="&#x6D6E;&#x70B9;&#x6570;&#x8F6C;&#x6362;&#x4E3A;&#x6574;&#x6570;">&#x6D6E;&#x70B9;&#x6570;&#x8F6C;&#x6362;&#x4E3A;&#x6574;&#x6570;</h2>
+<pre class="language-"><code class="lang-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token keyword">const</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+    <span class="token keyword">float</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">float</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>a<span class="token punctuation">;</span>
+    <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">9.0</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%d\n&quot;</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 1091567616</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%f\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 9.000000</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code>9.0 =&gt; 1001.0 = 1.001 &#xD7; 2^3
+    =&gt; S = 0
+    =&gt; M = 00100000000000000000000
+    =&gt; E = 3 + 127 = 130 = 10000010
+    =&gt; 01000001000100000000000000000000 = 1091567616
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="原码-反码-补码.html" class="navigation navigation-prev " aria-label="Previous page: 原码-反码-补码">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="时间复杂度.html" class="navigation navigation-next " aria-label="Next page: 时间复杂度">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"浮点数","level":"1.1.4","depth":2,"next":{"title":"时间复杂度","level":"1.1.5","depth":2,"path":"docs/时间复杂度.md","ref":"docs/时间复杂度.md","articles":[]},"previous":{"title":"原码-反码-补码","level":"1.1.3","depth":2,"path":"docs/原码-反码-补码.md","ref":"docs/原码-反码-补码.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"Notes","language":"zh-hans","gitbook":">=3.0.0","description":"Notes","direction":"ltr"},"file":{"path":"docs/浮点数.md","mtime":"2020-07-26T13:00:24.670Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-26T13:00:56.727Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
