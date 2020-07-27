@@ -16,6 +16,27 @@
 * [选择排序](#选择排序)
 * [插入排序](#插入排序)
 * [快速排序](#快速排序)
+* [链表反转]
+* [获得上周一和上周日的日期](#获得上周一和上周日的日期)
+* [去除数组中键值为空的元素](#去除数组中键值为空的元素)
+* [去除数组中键值重复的元素](#去除数组中键值重复的元素)
+* [重新建立数组索引](#重新建立数组索引)
+* [对二维数组中多个键值相同的元素进行去重](#对二维数组中多个键值相同的元素进行去重)
+* [使用正则表达式验证字符串不能为纯数字，不能为纯字母，并且不能包含彩票 / 广告等关键词]
+* [复制一个数组 N 次](#复制一个数组-n-次)
+* [抽象类和接口的区别]
+* [猴子选大王]
+* [发红包]
+* [斐波那契数列]
+* [二分查找]
+* [二维数组转换为一维数组]
+* [读取大文件]
+* [如何实现多继承]
+* [PHP 执行流程]
+* [自动加载的实现]
+* [单引号和双引号所包含的字符串的区别]
+* [递增递减运算符](#递增递减运算符)
+* [类型转换的判别](#类型转换的判别)
 
 ## 垃圾回收机制
 
@@ -323,3 +344,164 @@ function quickSort(array &$array)
 }
 
 ```
+
+## 链表反转
+
+```php
+
+```
+
+## 获得上周一和上周日的日期
+
+```php
+<?php
+
+date('Y-m-d', strtotime('Monday Last Week'));
+date('Y-m-d', strtotime('Sunday Last Week'));
+
+```
+
+## 去除数组中键值为空的元素
+
+```php
+<?php
+
+array_filter($array);
+
+```
+
+## 去除数组中键值重复的元素
+
+```php
+<?php
+
+array_unique($array);
+
+```
+
+## 重新建立数组索引
+
+```php
+<?php
+
+array_values($array);
+
+```
+
+## 对二维数组中多个键值相同的元素进行去重
+
+```php
+<?php
+
+/**
+ * Unique array.
+ *
+ * @param  array  &$array
+ * @param  string $key1
+ * @param  string $key2
+ * @return void
+ */
+function uniqueArray(array &$array, string $key1, string $key2)
+{
+    if (!is_array($array) || empty($array)) {
+        return;
+    }
+
+    $tmp = [];
+    foreach ($array as $key => $value) {
+        if (isset($value[$key1]) && isset($value[$key2])) {
+            $string = $value[$key1] . $value[$key2];
+            if (in_array($string, $tmp)) {
+                unset($array[$key]);
+            } else {
+                $tmp[] = $string;
+            }
+        }
+    }
+}
+
+```
+
+## 使用正则表达式验证字符串不能为纯数字，不能为纯字母，并且不能包含彩票 / 广告等关键词
+
+```php
+
+```
+
+## 复制一个数组 N 次
+
+```php
+<?php
+
+/**
+ * Repeat array.
+ *
+ * @param  array  &$array
+ * @param  int    $count
+ * @return void
+ */
+function repeatArray(array &$array, int $count)
+{
+    if (!is_array($array) || empty($array)) {
+        return;
+    }
+
+    $tmp = $array;
+    for ($i = 1; $i < $count; $i++) {
+        $array = array_merge($array, $tmp);
+    }
+}
+
+```
+
+## 抽象类和接口的区别
+
+## 猴子选大王
+
+```php
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 递增递减运算符
+
+```php
+<?php
+
+$x = 1;
+++$x;
+$y = $x++;
+var_dump($x); // int(3)
+var_dump($y); // int(2)
+
+```
+
+## 类型转换的判别
+
+```php
+<?php
+
+$foo = "24linux" + 6;
+var_dump($foo); // int(30)
+
+```
+
