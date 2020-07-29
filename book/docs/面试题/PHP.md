@@ -29,7 +29,6 @@
 * [发红包]
 * [斐波那契数列]
 * [二分查找]
-* [二维数组转换为一维数组]
 * [读取大文件]
 * [如何实现多继承]
 * [PHP 执行流程]
@@ -37,6 +36,11 @@
 * [单引号和双引号所包含的字符串的区别](#单引号和双引号所包含的字符串的区别)
 * [递增递减运算符](#递增递减运算符)
 * [类型转换的判别](#类型转换的判别)
+* [字符串函数与大小写敏感](#字符串函数与大小写敏感)
+* [变量范围](#变量范围)
+* [三元运算符](#三元运算符)
+* [传值和传引用的区别]
+* [从 URL 中获取文件的扩展名](#从-url-中获取文件的扩展名)
 
 ## 垃圾回收机制
 
@@ -467,17 +471,29 @@ function repeatArray(array &$array, int $count)
 
 ```
 
+## 发红包
 
+```php
 
+```
 
+## 斐波那契数列
 
+```php
 
+```
 
+## 二分查找
 
+```php
 
+```
 
+## 读取大文件
 
+## 如何实现多继承
 
+## PHP 执行流程
 
 ## 自动加载的实现
 
@@ -513,6 +529,74 @@ var_dump($y); // int(2)
 
 $foo = "24linux" + 6;
 var_dump($foo); // int(30)
+
+```
+
+## 字符串函数与大小写敏感
+
+```php
+<?php
+
+var_dump(strstr('PHPlinux', 'L'));  // bool(false)
+var_dump(stristr('PHPLinux', 'l')); // string(5) "Linux"
+
+```
+
+## 变量范围
+
+```php
+<?php
+
+$foo = 'foo';
+
+/**
+ * Just a test function.
+ *
+ * @param  void
+ * @return void
+ */
+function foo()
+{
+    $foo = 'Hello World!';
+    global $foo;
+    echo $foo;
+}
+
+echo $foo; // foo
+foo();     // foo
+
+```
+
+## 三元运算符
+
+```php
+<?php
+
+$foo = 201;
+$bar = 40;
+$baz = $foo > $bar ? 4 : 5;
+echo $baz; // 4
+
+```
+
+## 传值和传引用的区别
+
+## 从 URL 中获取文件的扩展名
+
+```php
+<?php
+
+/**
+ * Get the extension name.
+ *
+ * @param  string $url
+ * @return string
+ */
+function getExtensionName(string $url): string
+{
+    $path = urldecode(parse_url($url, PHP_URL_PATH));
+    return trim(strrchr($path, '.'), '.');
+}
 
 ```
 
