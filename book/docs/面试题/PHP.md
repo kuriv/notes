@@ -41,6 +41,9 @@
 * [三元运算符](#三元运算符)
 * [传值和传引用的区别]
 * [从 URL 中获取文件的扩展名](#从-url-中获取文件的扩展名)
+* [判断键名是否存在于数组中](#判断键名是否存在于数组中)
+* [判断字符串是否是另一个字符串的子字符串](#判断字符串是否是另一个字符串的子字符串)
+* [遍历目录中所有文件和子目录]
 
 ## 垃圾回收机制
 
@@ -583,6 +586,8 @@ echo $baz; // 4
 
 ## 从 URL 中获取文件的扩展名
 
+###### 方法一：
+
 ```php
 <?php
 
@@ -597,6 +602,101 @@ function getExtensionName(string $url): string
     $path = urldecode(parse_url($url, PHP_URL_PATH));
     return trim(strrchr($path, '.'), '.');
 }
+
+```
+
+###### 方法二：
+
+```php
+<?php
+
+/**
+ * Get the extension name.
+ *
+ * @param  string $url
+ * @return string
+ */
+function getExtensionName(string $url): string
+{
+    $extension = pathinfo($url, PATHINFO_EXTENSION);
+    if ($tmp = strpos($extension, '?')) {
+        $extension = substr($extension, 0, $tmp);
+    }
+    if ($tmp = strpos($extension, '#')) {
+        $extension = substr($extension, 0, $tmp);
+    }
+    return $extension;
+}
+
+```
+
+###### 方法三：
+
+```php
+<?php
+
+/**
+ * Get the extension name.
+ *
+ * @param  string $url
+ * @return string
+ */
+function getExtensionName(string $url): string
+{
+    $extension = substr($url, strrpos($url, '.') + 1);
+    if ($tmp = strpos($extension, '?')) {
+        $extension = substr($extension, 0, $tmp);
+    }
+    if ($tmp = strpos($extension, '#')) {
+        $extension = substr($extension, 0, $tmp);
+    }
+    return $extension;
+}
+
+```
+
+## 判断键名是否存在于数组中
+
+###### 方法一：
+
+```php
+<?php
+
+array_key_exists('foo', $array);
+
+```
+
+###### 方法二：
+
+```php
+<?php
+
+in_array('foo', array_keys($array), true);
+
+```
+
+## 判断字符串是否是另一个字符串的子字符串
+
+```php
+<?php
+
+/**
+ * Check substring.
+ *
+ * @param  string $string1
+ * @param  string $string2
+ * @return bool
+ */
+function checkSubstring(string $string1, string $string2): bool
+{
+    return strpos($string2, $string1) !== false;
+}
+
+```
+
+## 遍历目录中所有文件和子目录
+
+```php
 
 ```
 
