@@ -584,6 +584,9 @@ echo $baz; // 4
 
 ## 传值和传引用的区别
 
+> * 传值是将实参的值赋值给形参，对形参的修改不会影响到实参的值。
+> * 传引用时传递的是实参的地址，对形参的修改将会影响到实参的值。
+
 ## 从 URL 中获取文件的扩展名
 
 ###### 方法一：
@@ -618,14 +621,7 @@ function getExtensionName(string $url): string
  */
 function getExtensionName(string $url): string
 {
-    $extension = pathinfo($url, PATHINFO_EXTENSION);
-    if ($tmp = strpos($extension, '?')) {
-        $extension = substr($extension, 0, $tmp);
-    }
-    if ($tmp = strpos($extension, '#')) {
-        $extension = substr($extension, 0, $tmp);
-    }
-    return $extension;
+    return pathinfo($url, PATHINFO_EXTENSION);
 }
 
 ```
@@ -643,14 +639,7 @@ function getExtensionName(string $url): string
  */
 function getExtensionName(string $url): string
 {
-    $extension = substr($url, strrpos($url, '.') + 1);
-    if ($tmp = strpos($extension, '?')) {
-        $extension = substr($extension, 0, $tmp);
-    }
-    if ($tmp = strpos($extension, '#')) {
-        $extension = substr($extension, 0, $tmp);
-    }
-    return $extension;
+    return substr($url, strrpos($url, '.') + 1);
 }
 
 ```
@@ -689,6 +678,15 @@ in_array('foo', array_keys($array), true);
  */
 function checkSubstring(string $string1, string $string2): bool
 {
+    if ($string1 === $string2) {
+        return true;
+    }
+
+    if (strlen($string1) > strlen($string2)) {
+        $tmp = $string1;
+        $string1 = $string2;
+        $string2 = $tmp;
+    }
     return strpos($string2, $string1) !== false;
 }
 
