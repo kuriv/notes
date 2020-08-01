@@ -43,7 +43,7 @@
 * [从 URL 中获取文件的扩展名](#从-url-中获取文件的扩展名)
 * [判断键名是否存在于数组中](#判断键名是否存在于数组中)
 * [判断字符串是否是另一个字符串的子字符串](#判断字符串是否是另一个字符串的子字符串)
-* [遍历目录中所有文件和子目录]
+* [遍历目录中所有文件和子目录](#遍历目录中所有文件和子目录)
 
 ## 垃圾回收机制
 
@@ -695,5 +695,28 @@ function checkSubstring(string $string1, string $string2): bool
 ## 遍历目录中所有文件和子目录
 
 ```php
+<?php
+
+/**
+ * Scan files.
+ *
+ * @param  string $dir
+ * @return array
+ */
+function scanFiles(string $dir): array
+{
+    $dir = realpath($dir);
+    if (!$dir || !is_dir($dir) || empty($files = array_slice(scandir($dir), 2))) {
+        return [];
+    }
+
+    $array = [];
+    foreach ($files as $value) {
+        $tmp = realpath($dir . '/' . $value);
+        is_dir($tmp) ? $array[$tmp] = scanFiles($tmp) : $array[] = $tmp;
+    }
+    return $array;
+}
 
 ```
+
