@@ -27,7 +27,7 @@
 * [抽象类和接口的区别](#抽象类和接口的区别)
 * [猴子选大王]
 * [发红包]
-* [斐波那契数列]
+* [斐波那契数列](#斐波那契数列)
 * [二分查找]
 * [读取大文件]
 * [如何实现多继承]
@@ -482,7 +482,55 @@ function repeatArray(array &$array, int $count)
 
 ## 斐波那契数列
 
+###### 方法一：
+
 ```php
+<?php
+
+/**
+ * Fibonacci sequence.
+ *
+ * @param  int    $num
+ * @return int
+ */
+function fib(int $num): int
+{
+    if ($num == 0 || $num == 1) {
+        return $num;
+    }
+
+    return fib($num - 2) + fib($num - 1);
+}
+
+```
+
+###### 方法二：
+
+```php
+<?php
+
+/**
+ * Fibonacci sequence.
+ *
+ * @param  int    $num
+ * @return int
+ */
+function fib(int $num): int
+{
+    if ($num == 0 || $num == 1) {
+        return $num;
+    }
+
+    $f0 = 0;
+    $f1 = 1;
+    $f2 = 0;
+    for ($i = 2; $i <= $num; $i++) {
+        $f2 = $f0 + $f1;
+        $f0 = $f1;
+        $f1 = $f2;
+    }
+    return $f2;
+}
 
 ```
 

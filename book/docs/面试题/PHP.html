@@ -324,7 +324,7 @@
 <li><a href="#&#x62BD;&#x8C61;&#x7C7B;&#x548C;&#x63A5;&#x53E3;&#x7684;&#x533A;&#x522B;">&#x62BD;&#x8C61;&#x7C7B;&#x548C;&#x63A5;&#x53E3;&#x7684;&#x533A;&#x522B;</a></li>
 <li>[&#x7334;&#x5B50;&#x9009;&#x5927;&#x738B;]</li>
 <li>[&#x53D1;&#x7EA2;&#x5305;]</li>
-<li>[&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;]</li>
+<li><a href="#&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;">&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;</a></li>
 <li>[&#x4E8C;&#x5206;&#x67E5;&#x627E;]</li>
 <li>[&#x8BFB;&#x53D6;&#x5927;&#x6587;&#x4EF6;]</li>
 <li>[&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x591A;&#x7EE7;&#x627F;]</li>
@@ -680,8 +680,49 @@
 
 </code></pre>
 <h2 id="&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;">&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;</h2>
-<pre class="language-"><code class="lang-php">
+<h6 id="&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;">&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;</h6>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
 
+<span class="token comment">/**
+ * Fibonacci sequence.
+ *
+ * @param  int    $num
+ * @return int
+ */</span>
+<span class="token keyword">function</span> <span class="token function">fib</span><span class="token punctuation">(</span>int <span class="token variable">$num</span><span class="token punctuation">)</span><span class="token punctuation">:</span> int
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$num</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> <span class="token variable">$num</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$num</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token function">fib</span><span class="token punctuation">(</span><span class="token variable">$num</span> <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">fib</span><span class="token punctuation">(</span><span class="token variable">$num</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h6 id="&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;">&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;</h6>
+<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token comment">/**
+ * Fibonacci sequence.
+ *
+ * @param  int    $num
+ * @return int
+ */</span>
+<span class="token keyword">function</span> <span class="token function">fib</span><span class="token punctuation">(</span>int <span class="token variable">$num</span><span class="token punctuation">)</span><span class="token punctuation">:</span> int
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$num</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> <span class="token variable">$num</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$num</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token variable">$f0</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token variable">$f1</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token variable">$f2</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">&lt;=</span> <span class="token variable">$num</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$f2</span> <span class="token operator">=</span> <span class="token variable">$f0</span> <span class="token operator">+</span> <span class="token variable">$f1</span><span class="token punctuation">;</span>
+        <span class="token variable">$f0</span> <span class="token operator">=</span> <span class="token variable">$f1</span><span class="token punctuation">;</span>
+        <span class="token variable">$f1</span> <span class="token operator">=</span> <span class="token variable">$f2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token variable">$f2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h2 id="&#x4E8C;&#x5206;&#x67E5;&#x627E;">&#x4E8C;&#x5206;&#x67E5;&#x627E;</h2>
 <pre class="language-"><code class="lang-php">
@@ -901,7 +942,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PHP","level":"1.1.6.2","depth":3,"previous":{"title":"HTTP","level":"1.1.6.1","depth":3,"path":"docs/面试题/HTTP.md","ref":"docs/面试题/HTTP.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"Notes","language":"zh-hans","gitbook":">=3.0.0","description":"Notes","direction":"ltr"},"file":{"path":"docs/面试题/PHP.md","mtime":"2020-08-01T14:21:53.869Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-01T14:22:05.402Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PHP","level":"1.1.6.2","depth":3,"previous":{"title":"HTTP","level":"1.1.6.1","depth":3,"path":"docs/面试题/HTTP.md","ref":"docs/面试题/HTTP.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"Notes","language":"zh-hans","gitbook":">=3.0.0","description":"Notes","direction":"ltr"},"file":{"path":"docs/面试题/PHP.md","mtime":"2020-08-02T13:32:03.459Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-02T13:32:06.349Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
