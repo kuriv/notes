@@ -44,7 +44,7 @@
 * [判断键名是否存在于数组中](#判断键名是否存在于数组中)
 * [判断字符串是否是另一个字符串的子字符串](#判断字符串是否是另一个字符串的子字符串)
 * [遍历目录中所有文件和子目录](#遍历目录中所有文件和子目录)
-* [配置优化]
+* [配置优化](#配置优化)
 
 ## 垃圾回收机制
 
@@ -774,3 +774,39 @@ function scanFiles(string $dir): array
 ```
 
 ## 配置优化
+
+```
+;;;;;;;;;;;;;;;;;;;;
+; Language Options ;
+;;;;;;;;;;;;;;;;;;;;
+
+output_buffering = 4096
+realpath_cache_size = 4096K
+realpath_cache_ttl = 120
+
+;;;;;;;;;;;;;;;;;;;
+; Resource Limits ;
+;;;;;;;;;;;;;;;;;;;
+
+max_execution_time = 30
+memory_limit = 128M
+
+;;;;;;;;;;;;;;;;
+; File Uploads ;
+;;;;;;;;;;;;;;;;
+
+file_uploads = On
+upload_max_filesize = 10M
+max_file_uploads = 20
+
+;;;;;;;;;;;;;;;;;;;
+; Module Settings ;
+;;;;;;;;;;;;;;;;;;;
+
+[Session]
+session.save_handler = redis
+
+[opcache]
+opcache.enable=1
+```
+
