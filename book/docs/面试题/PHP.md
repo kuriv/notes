@@ -16,7 +16,7 @@
 * [选择排序](#选择排序)
 * [插入排序](#插入排序)
 * [快速排序](#快速排序)
-* [链表反转]
+* [链表反转](#链表反转)
 * [获得上周一和上周日的日期](#获得上周一和上周日的日期)
 * [去除数组中键值为空的元素](#去除数组中键值为空的元素)
 * [去除数组中键值重复的元素](#去除数组中键值重复的元素)
@@ -28,7 +28,7 @@
 * [猴子选大王]
 * [发红包]
 * [斐波那契数列](#斐波那契数列)
-* [二分查找]
+* [二分查找](#二分查找)
 * [读取大文件](#读取大文件)
 * [如何实现多继承](#如何实现多继承)
 * [PHP 执行流程](#php-执行流程)
@@ -355,7 +355,57 @@ function quickSort(array &$array)
 
 ## 链表反转
 
+###### 方法一：
+
 ```php
+<?php
+
+/**
+ * Reverse list.
+ *
+ * @param  ListNode $pHead
+ * @return ListNode
+ */
+function reverseList(ListNode $pHead): ?ListNode
+{
+    if ($pHead == null || $pHead->next == null) {
+        return $pHead;
+    }
+
+    $p = null;
+    while ($pHead != null) {
+        $tmp = $pHead->next;
+        $pHead->next = $p;
+        $p = $pHead;
+        $pHead = $tmp;
+    }
+    return $p;
+}
+
+```
+
+###### 方法二：
+
+```php
+<?php
+
+/**
+ * Reverse list.
+ *
+ * @param  ListNode $pHead
+ * @return ListNode
+ */
+function reverseList(ListNode $pHead): ?ListNode
+{
+    if ($pHead == null || $pHead->next == null) {
+        return $pHead;
+    }
+
+    $p = reverseList($pHead->next);
+    $pHead->next->next = $pHead;
+    $pHead->next = null;
+    return $p;
+}
 
 ```
 
@@ -538,6 +588,37 @@ function fib(int $num): int
 ## 二分查找
 
 ```php
+<?php
+
+/**
+ * Binary search.
+ *
+ * @param  array  $array
+ * @param  int    $num
+ * @return int
+ */
+function binarySearch(array $array, int $num): int
+{
+    if (!is_array($array) || empty($array)) {
+        return -1;
+    }
+
+    $count = count($array);
+    $left = 0;
+    $right = $count - 1;
+    while ($left <= $right) {
+        $middle = (int) (($left + $right) / 2);
+        if ($array[$middle] > $num) {
+            $right = $middle - 1;
+        } elseif ($array[$middle] < $num) {
+            $left = $middle + 1;
+        } else {
+            return $middle;
+        }
+    }
+
+    return -1;
+}
 
 ```
 
