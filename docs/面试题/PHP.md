@@ -25,8 +25,8 @@
 * [使用正则表达式验证字符串不能为纯数字，不能为纯字母，并且不能包含彩票 / 广告等关键词](#使用正则表达式验证字符串不能为纯数字，不能为纯字母，并且不能包含彩票--广告等关键词)
 * [复制一个数组 N 次](#复制一个数组-n-次)
 * [抽象类和接口的区别](#抽象类和接口的区别)
-* [猴子选大王]
-* [发红包]
+* [猴子选大王](#猴子选大王)
+* [发红包](#发红包)
 * [斐波那契数列](#斐波那契数列)
 * [二分查找](#二分查找)
 * [读取大文件](#读取大文件)
@@ -522,12 +522,66 @@ function repeatArray(array &$array, int $count)
 ## 猴子选大王
 
 ```php
+<?php
+
+/**
+ * Monkey king.
+ *
+ * @param  int    $count
+ * @param  int    $num
+ * @return int
+ */
+function monkeyKing(int $count, int $num): int
+{
+    if ($count < 1 || $num <= 0) {
+        return -1;
+    }
+
+    $array = range(1, $count);
+    $i = 1;
+    while (count($array) > 1) {
+        if ($i % $num != 0) {
+            $array[] = $array[$i - 1];
+        }
+        unset($array[$i - 1]);
+        $i++;
+    }
+    return $array[$i - 1];
+}
 
 ```
 
 ## 发红包
 
 ```php
+<?php
+
+/**
+ * Red envelope.
+ *
+ * @param  float  $total
+ * @param  int    $num
+ * @param  float  $min
+ * @param  float  $maxPercent
+ * @return array
+ */
+function redEnvelope(float $total, int $num, float $min = 0.01, float $maxPercent = 0.6): array
+{
+    bcscale(2);
+    if (bccomp($total, 0) <= 0 || bccomp($num, 0) <= 0 || bccomp($total, bcmul($num, $min)) < 0 || bccomp($maxPercent, 1) > 0) {
+        return [];
+    }
+
+    $array = [];
+    for (--$num; $num > 0; $num--) {
+        $max = bcmul(bcsub($total, bcmul($num, $min)), $maxPercent);
+        $tmp = bcdiv(mt_rand(bcmul($min, 100), bcmul($max, 100)), 100);
+        $array[] = $tmp;
+        $total = bcsub($total, $tmp);
+    }
+    $array[] = $total;
+    return $array;
+}
 
 ```
 
