@@ -2,6 +2,8 @@
 
 * [Notes](README.md)
     * [充分条件与必要条件](docs/充分条件与必要条件.md)
+    * [TCP 三次握手与四次挥手](docs/TCP 三次握手与四次挥手.md)
+    * [OSI 七层模型和 TCP 四层模型]
     * [EM 还是 REM](docs/EM 还是 REM.md)
     * [CRLF](docs/CRLF.md)
     * [SOLID](docs/SOLID.md)
